@@ -1,0 +1,17 @@
+name: Test and lint
+on: [push]
+jobs:
+  test_lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v2
+      - name: Set up Ruby
+        uses:  ruby/setup-ruby@v1
+      - name: Install dependencies
+        run: bundle install
+      - name: Run linter
+        run:
+          rubocop
+      - name: Run tests
+        run:
+          bin/rails test
