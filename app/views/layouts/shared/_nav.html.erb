@@ -1,0 +1,13 @@
+<nav class='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
+  <div class='container-fluid'>
+    <a class='navbar-brand' href='#'>Blog</a>
+    <ul class='navbar-nav mb-2 mb-md-0'>
+      <% if user_signed_in? %>
+          <li class='nav-item'><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link active'%></li>
+      <% else %>
+        <li class='nav-item'><%= link_to 'Log in', new_user_session_path, class: 'nav-link active' %></li>
+        <li class='nav-item'><%= link_to 'Sign up', new_user_registration_path, class: 'nav-link active' %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
