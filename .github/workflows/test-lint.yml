@@ -14,11 +14,10 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: 
-          bundle install
-          yarn install
+          make ci-setup
       - name: Run linter
         run:
-          rubocop
+          make lint
       - name: Run tests
         run:
-          bin/rails test
+          make test
