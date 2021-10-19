@@ -11,7 +11,25 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 20_211_016_092_425) do
+
+ActiveRecord::Schema.define(version: 20_211_019_131_834) do
+  create_table 'post_categories', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'posts', force: :cascade do |t|
+    t.string 'title'
+    t.string 'body'
+    t.integer 'creator_id', null: false
+    t.integer 'post_category_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['creator_id'], name: 'index_posts_on_creator_id'
+    t.index ['post_category_id'], name: 'index_posts_on_post_category_id'
+  end
+
   create_table 'users', force: :cascade do |t|
     t.string 'email', default: '', null: false
     t.string 'encrypted_password', default: '', null: false
@@ -23,4 +41,7 @@ ActiveRecord::Schema.define(version: 20_211_016_092_425) do
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
+
+  add_foreign_key 'posts', 'post_categories'
+  add_foreign_key 'posts', 'users', column: 'creator_id'
 end
