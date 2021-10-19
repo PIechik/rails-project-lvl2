@@ -5,4 +5,5 @@ lint:
 ci-setup:
 	yarn install
 	bundle install
+	bin/rails webpacker:compile
 .PHONY: test
