@@ -4,10 +4,10 @@ one:
   title: MyString
   body: MyString
   creator: one
-  post_category: one
+  category: one
 
 two:
   title: MyString
   body: MyString
   creator: two
-  post_category: two
+  category: two
