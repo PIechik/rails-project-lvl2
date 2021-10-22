@@ -14,9 +14,13 @@
     <header>
       <%= render 'layouts/shared/nav' %>
     </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class='container my-4'>
+      <div class='container my-2'>
+        <div class="notice"><%= notice %></div>
+        <div class="alert alert-info"><%= alert %></div>
+      </div>
+      <%= yield %>
+    </div>
     <footer class="footer mt-auto py-3 bg-light">
     
     </footer>

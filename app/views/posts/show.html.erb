@@ -1,5 +1,12 @@
-<div class='container my-4'>
-  <h2><%= @post.title %></h2>
-  <p><%= @post.body%></p>
-  <span><%= @post.creator.email %></span>
-<div>
+<h2><%= @post.title %></h2>
+<p><%= @post.body%></p>
+<span><%= @post.creator.email %></span>
+
+<%= render 'comments_form'%>
+
+<% @post.comments.each do |comment| %>
+  <div class='card mb-4'>
+    <%= comment.content %>
+    <%= comment.user.try(:email) %>
+  </div>
+<% end %>

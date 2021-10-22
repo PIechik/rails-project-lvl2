@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to root_path, notice: 'Post was successfully created'
+      redirect_to root_path
     else
       render :new
     end
@@ -26,6 +26,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_category_id)
+    params.require(:post).permit(:title, :body, :category_id)
   end
 end
