@@ -5,11 +5,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
 
-    if @comment.save
-      redirect_to @post
-    else
-      redirect_to @post
-    end
+    redirect_to @post if @comment.save
   end
 
   private
