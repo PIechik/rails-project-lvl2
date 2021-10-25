@@ -3,6 +3,8 @@ AllCops:
   NewCops: enable
   Exclude:
     - 'bin/**'
+    - 'db/schema.rb'
+    - 'db/migrate/**'
 Style/Documentation:
   Enabled: false
 Metrics/MethodLength:

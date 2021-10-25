@@ -1,0 +1,10 @@
+<hr class='my-2'>
+<div class='d-flex'>
+  <span class='me-1'><%= comment.user.email %></span>
+  <p class='mr-2'><%= comment.content %></p>
+</div>
+<hr class='my-2'>
+<a href='#collapse<%= comment.id %>' role='button' data-bs-toggle='collapse'>Reply</a>
+<div class='collapse in' id='collapse<%= comment.id  %>'>
+  <%= render 'comments_form', parent_id: comment.id %>
+</div>

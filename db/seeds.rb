@@ -7,6 +7,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-PostCategory.create(name: 'ruby')
-PostCategory.create(name: 'java')
-PostCategory.create(name: 'php')
+Category.create(name: 'ruby')
+Category.create(name: 'java')
+Category.create(name: 'php')

@@ -2,11 +2,6 @@
 <p><%= @post.body%></p>
 <span><%= @post.creator.email %></span>
 
-<%= render 'comments_form'%>
+<%= render 'comments_form', parent_id: nil %>
 
-<% @post.comments.each do |comment| %>
-  <div class='card mb-4'>
-    <%= comment.content %>
-    <%= comment.user.try(:email) %>
-  </div>
-<% end %>
+<%= nested_comments @post.comments.arrange(order: :created_at)%>
