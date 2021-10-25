@@ -18,6 +18,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select 'h2', posts(:one).title
+    assert_select 'p', post_comments(:one).content
   end
 
   test 'can create new post' do
@@ -26,7 +27,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_difference 'Post.count' do
-      post posts_path, params: { post: { title: 'Title', body: 'Body', category_id: categories(:one).id } }
+      post posts_path, params: { post: { title: 'Title', body: 'Body', category_id: post_categories(:one).id } }
     end
     assert_response :redirect
     follow_redirect!
