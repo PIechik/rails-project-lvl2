@@ -1,0 +1,9 @@
+<% if user_signed_in? && user_liked_post?(@post) %>
+  <%= link_to post_likes_path(@post), method: :delete, rel: 'nofollow', class: 'link-dark text-decoration-none' do %>
+    <i class='bi bi-heart-fill'><%= @post.likes.count %></i>
+  <% end %>
+<% else %>
+  <%= link_to post_likes_path(@post), method: :post, rel: 'nofollow', class: 'link-dark text-decoration-none' do %>
+    <i class='bi bi-heart'><%= @post.likes.count %></i>
+  <% end %>
+<% end %>

@@ -1,7 +1,14 @@
+<ol class='breadcrumb'>
+  <li class='breadcrumb-item'><%= link_to 'All posts', posts_path %></li>
+  <li class='breadcrumb-item active'><%= @post.category.name %></li>
+</ol>
 <h2><%= @post.title %></h2>
 <p><%= @post.body%></p>
 <span><%= @post.creator.email %></span>
 
+<div>
+  <%= render 'likes'%>
+</div>
 <%= render 'comments_form', parent_id: nil %>
 
 <%= nested_comments @post.comments.arrange(order: :created_at)%>

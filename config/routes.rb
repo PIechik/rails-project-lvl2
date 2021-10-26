@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :posts do
     scope module: :posts do
       post 'comments', to: 'comments#create'
+      post 'likes', to: 'likes#create'
+      delete 'likes', to: 'likes#destroy'
     end
   end
 end
