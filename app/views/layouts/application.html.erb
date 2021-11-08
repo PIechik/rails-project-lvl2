@@ -14,15 +14,21 @@
     <header>
       <%= render 'layouts/shared/nav' %>
     </header>
-    <div class='container my-4'>
-      <div class='container my-2'>
-        <div class="notice"><%= notice %></div>
-        <div class="alert alert-info"><%= alert %></div>
+    <main>
+      <div class='container my-4'>
+        <div class='container mt-6 mb-2'>
+          <% if flash.any? %>
+            <% flash.each do |_type, message|%>
+              <div class="alert alert-info" role="alert"><%= message %></div>
+            <% end %>
+          <% end %>
+        </div>
+        <div>
+          <%= yield %>
+        </div>
       </div>
-      <%= yield %>
-    </div>
-    <footer class="footer mt-auto py-3 bg-light">
-    
+    </main>
+    <footer class="footer pt-3 bg-light">
     </footer>
   </body>
 </html>

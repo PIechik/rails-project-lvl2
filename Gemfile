@@ -61,6 +61,7 @@ end
 gem 'ancestry'
 gem 'devise'
 gem 'minitest-power_assert'
+gem 'pundit'
 gem 'rubocop', '~> 1.7'
 gem 'simple_form'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
