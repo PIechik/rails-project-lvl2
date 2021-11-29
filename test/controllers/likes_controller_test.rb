@@ -18,8 +18,9 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
   test 'can remove like from post' do
     post = posts(:one)
+    like = post_likes(:two)
     assert_difference('post.likes.count', -1) do
-      delete post_likes_path(post)
+      delete post_like_path(post, like)
     end
   end
 end
