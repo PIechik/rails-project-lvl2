@@ -9,6 +9,6 @@ module PostsHelper
   end
 
   def user_liked_post?(post)
-    Post::Like.find_by(user_id: current_user.id, post_id: post.id) ? true : false
+    PostLike.find_by(user_id: current_user.id, post_id: post.id) ? true : false
   end
 end

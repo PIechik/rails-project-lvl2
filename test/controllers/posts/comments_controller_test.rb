@@ -7,7 +7,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test 'can create new comment' do
     sign_in users(:one)
-    assert_difference('Post::Comment.count') do
+    assert_difference('PostComment.count') do
       post post_comments_path(posts(:two)), params: { post_comment: { content: 'Text', ancestry: nil } }
     end
 

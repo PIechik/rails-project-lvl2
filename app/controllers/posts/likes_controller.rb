@@ -12,7 +12,7 @@ module Posts
 
     def destroy
       @post = Post.find(params[:post_id])
-      @like = Post::Like.find_by(user_id: current_user.id, post_id: @post.id)
+      @like = PostLike.find_by(user_id: current_user.id, post_id: @post.id)
       redirect_to @post if @like.destroy
     end
   end
