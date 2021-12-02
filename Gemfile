@@ -60,6 +60,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'ancestry'
 gem 'devise'
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 gem 'minitest-power_assert'
 gem 'pundit'
 gem 'rubocop', '~> 1.7'
