@@ -1,3 +1,4 @@
+require: rubocop-rails
 AllCops:
   TargetRubyVersion: 3.0
   NewCops: enable
