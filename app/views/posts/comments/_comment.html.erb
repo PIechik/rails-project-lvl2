@@ -1,10 +1,18 @@
 <hr class='my-2'>
 <div class='d-flex'>
-  <span class='me-1'><%= comment.user.email %></span>
-  <p class='mr-2'><%= comment.content %></p>
+  <div class='mr-auto'>
+    <span class='me-1'><%= comment.user.email %></span>
+    <span class='text-muted'><%= comment.created_at.strftime("%d %b., %H:%M") %></span>
+    <p class='mr-2'><%= comment.content %></p>
+  </div>
 </div>
 <hr class='my-2'>
 <a href='#collapse<%= comment.id %>' role='button' data-bs-toggle='collapse'>Reply</a>
 <div class='collapse in' id='collapse<%= comment.id  %>'>
-  <%= render 'comments_form', parent_id: comment.id %>
+  <%= render 'comments_form', ancestry: comment.ancestry ? "#{comment.ancestry}/#{comment.id}" : comment.id %>
 </div>
+<% comment.children.each do |child_comment| %>
+  <div class='ms-4'>
+    <%= render 'posts/comments/comment', comment: child_comment %>
+  </div>
+<% end %>

@@ -16,7 +16,9 @@
       <%= link_to 'Destroy', post_path(@post), method: :delete %>
     <% end %>
   </div>
-  <%= render 'comments_form', parent_id: nil %>
+  <%= render 'comments_form', ancestry: nil %>
 </div>
 
-<%= nested_comments @post.comments.arrange(order: :created_at)%>
+<% @post.comments.each do |comment| %>
+  <%= render 'posts/comments/comment', comment: comment if comment.is_root? %>
+<% end %>

@@ -1,9 +1,9 @@
-<%= simple_form_for @post.comments.build, url: post_comments_path(@post) do |f| %>
+<%= simple_form_for @comment, url: post_comments_path(@post) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <% if parent_id %>
-    <%= f.hidden_field :ancestry, value: parent_id %>
+  <% if ancestry %>
+    <%= f.hidden_field :ancestry, value: ancestry %>
   <% end %>
   <%= f.input :content, label: 'Comment', input_html: { class: 'form-control' } %>
   <%= f.button :submit, class: 'btn btn-outline-success' %>
