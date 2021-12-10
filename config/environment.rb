@@ -15,7 +15,7 @@ end
 
 begin
   Rails.application.initialize!
-rescue Exception => e
+rescue Exception => e # rubocop:disable Lint/RescueException
   notify.call(e)
   raise
 end
