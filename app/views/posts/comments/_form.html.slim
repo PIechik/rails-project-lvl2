@@ -1,0 +1,8 @@
+= simple_form_for @comment, url: post_comments_path(@post) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  - if ancestry
+    = f.hidden_field :ancestry, value: ancestry
+  = f.input :content, label: 'Comment', input_html: { class: 'form-control' }
+  = f.button :submit, class: 'btn btn-outline-success'

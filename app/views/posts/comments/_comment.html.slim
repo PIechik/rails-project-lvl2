@@ -1,0 +1,17 @@
+hr.my-2
+.d-flex
+  .mr-auto
+    span.me-1
+      = comment.user.email
+    span.text-muted
+      = comment.created_at.strftime('%d %b., %H:%M')
+    p.mr-2
+      = comment.content
+hr.my-2
+a href="#collapse#{comment.id}" role='button' data-bs-toggle='collapse'
+  | Reply
+.collapse.in id="collapse#{comment.id}"
+  = render 'posts/comments/form', ancestry: comment.ancestry ? "#{comment.ancestry}/#{comment.id}" : comment.id
+- comment.children.each do |child_comment|
+  .ms-4
+    = render 'posts/comments/comment', comment: child_comment

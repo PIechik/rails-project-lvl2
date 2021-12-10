@@ -288,6 +288,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   simple_form
+  slim
   slim_lint (~> 0.22.1)
   spring
   sqlite3 (~> 1.4)

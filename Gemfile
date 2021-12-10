@@ -66,5 +66,6 @@ gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 gem 'minitest-power_assert'
 gem 'pundit'
 gem 'simple_form'
+gem 'slim'
 gem 'slim_lint', '~> 0.22.1'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
