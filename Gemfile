@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'sqlite3', '~> 1.4'
 end
 
@@ -54,6 +55,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
+  gem 'minitest-power_assert'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
@@ -62,8 +64,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'ancestry'
 gem 'devise'
-gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
-gem 'minitest-power_assert'
 gem 'pundit'
 gem 'rollbar'
 gem 'simple_form'
