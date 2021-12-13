@@ -6,21 +6,24 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    sign_in users(:two)
+    @user = users(:two)
+    sign_in @user
   end
 
   test 'can like post' do
     post = posts(:two)
-    assert_difference('post.likes.count') do
-      post post_likes_path(post)
-    end
+    post post_likes_path(post)
+
+    like = post.likes.find_by(user_id: @user.id)
+    assert { like }
   end
 
   test 'can remove like from post' do
     post = posts(:one)
     like = post_likes(:two)
-    assert_difference('post.likes.count', -1) do
-      delete post_like_path(post, like)
-    end
+
+    delete post_like_path(post, like)
+
+    assert { !post.likes.find_by(id: like.id) }
   end
 end

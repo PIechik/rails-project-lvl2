@@ -7,12 +7,14 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test 'can create new comment' do
     sign_in users(:one)
-    assert_difference('PostComment.count') do
-      post post_comments_path(posts(:two)), params: { post_comment: { content: 'Text', ancestry: nil } }
-    end
 
-    assert_redirected_to post_path(posts(:two))
-    follow_redirect!
-    assert_select 'p', 'Text'
+    post = posts(:two)
+    attrs = { content: Faker::Lorem.sentence, ancestry: nil }
+
+    post post_comments_path(post), params: { post_comment: attrs }
+
+    comment = post.comments.find_by(attrs)
+    assert { comment }
+    assert_redirected_to post_path(post)
   end
 end

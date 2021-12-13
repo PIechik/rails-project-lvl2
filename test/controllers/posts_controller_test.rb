@@ -5,6 +5,10 @@ require 'test_helper'
 class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
+  setup do
+    sign_in users(:one)
+  end
+
   test 'can open index page' do
     get posts_path
 
@@ -22,16 +26,42 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'can create new post' do
-    sign_in users(:one)
     get new_post_path
     assert_response :success
 
-    assert_difference 'Post.count' do
-      post posts_path, params: { post: { title: 'Title', body: 'Body', post_category_id: post_categories(:one).id } }
-    end
+    attrs = { title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph_by_chars(number: 250),
+              post_category_id: post_categories(:one).id }
+    post posts_path, params: { post: attrs }
+
+    assert { Post.find_by(attrs) }
     assert_response :redirect
     follow_redirect!
+    assert_select 'h2', attrs[:title]
+  end
+
+  test 'can open edit page' do
+    get edit_post_path(posts(:one))
     assert_response :success
-    assert_select 'h2', 'Title'
+  end
+
+  test 'can update post' do
+    post = posts(:one)
+    attrs = { title: Faker::Lorem.sentence }
+
+    patch post_path(post), params: { post: attrs }
+    assert_response :redirect
+
+    post.reload
+
+    assert { post.title == attrs[:title] }
+  end
+
+  test 'can destroy post' do
+    post = posts(:one)
+
+    delete post_path(post)
+    assert_response :redirect
+
+    assert { !Post.find_by(id: post.id) }
   end
 end
