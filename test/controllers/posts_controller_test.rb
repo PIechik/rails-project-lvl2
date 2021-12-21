@@ -6,7 +6,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    sign_in users(:one)
+    @user = users(:one)
+    sign_in @user
   end
 
   test 'can open index page' do
@@ -18,6 +19,15 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'can show post' do
+    get post_path(posts(:one))
+
+    assert_response :success
+    assert_select 'h2', posts(:one).title
+    assert_select 'p', post_comments(:one).content
+  end
+
+  test 'can show post to unauthenticated user' do
+    sign_out @user
     get post_path(posts(:one))
 
     assert_response :success

@@ -26,4 +26,14 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
     assert { !post.likes.find_by(id: like.id) }
   end
+
+  test 'unauthenticated user cannot like post' do
+    sign_out @user
+    post = posts(:two)
+    post post_likes_path(post)
+
+    like = post.likes.find_by(user_id: @user.id)
+    assert { !like }
+    assert_response :redirect
+  end
 end

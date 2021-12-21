@@ -5,19 +5,23 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    authorize @posts
   end
 
   def show
     @post = Post.find(params[:id])
+    authorize @post
     @comment = PostComment.new
   end
 
   def new
     @post = current_user.posts.build
+    authorize @post
   end
 
   def create
     @post = current_user.posts.build(post_params)
+    authorize @post
 
     if @post.save
       redirect_to root_path, notice: 'Post was successfully created.'
