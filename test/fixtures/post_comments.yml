@@ -2,10 +2,10 @@
 
 one:
   content: <%= Faker::Lorem.sentence %>
-  user: one
   post: one
+  user: one
 
 two:
   content: <%= Faker::Lorem.sentence %>
-  user: two
   post: one
+  user: two

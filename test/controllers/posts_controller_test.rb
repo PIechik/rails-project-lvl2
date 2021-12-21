@@ -18,6 +18,15 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'h2', posts(:two).title
   end
 
+  test 'can open index page for unauthenticated user' do
+    sign_out @user
+    get posts_path
+
+    assert_response :success
+    assert_select 'h2', posts(:one).title
+    assert_select 'h2', posts(:two).title
+  end
+
   test 'can show post' do
     get post_path(posts(:one))
 
