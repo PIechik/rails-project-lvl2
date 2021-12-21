@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     authorize @post
 
     if @post.save
-      redirect_to root_path, notice: 'Post was successfully created.'
+      redirect_to root_path, notice: t('posts.notice.create')
     else
       render :new
     end
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     authorize @post
 
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to @post, notice: t('posts.notice.update')
     else
       render :edit
     end
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize @post
     if @post.destroy
-      redirect_to posts_path, notice: 'Post was successfully destroyed'
+      redirect_to posts_path, notice: t('posts.notice.destroy')
     else
       redirect_to @post
     end

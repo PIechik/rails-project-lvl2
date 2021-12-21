@@ -65,6 +65,7 @@ end
 gem 'ancestry'
 gem 'devise'
 gem 'pundit'
+gem 'rails-i18n'
 gem 'rollbar'
 gem 'simple_form'
 gem 'slim'

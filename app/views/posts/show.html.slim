@@ -1,6 +1,6 @@
 ol.breadcrumb
   li.breadcrumb-item
-    = link_to 'All posts', posts_path
+    = link_to t('posts.index'), posts_path
   li.breadcrumb-item.active
     = @post.post_category.name
 h2
@@ -17,10 +17,10 @@ p
   p
     - if policy(@post).edit?
       span.me-2
-        = link_to 'Edit', edit_post_path(@post)
+        = link_to t('links.edit'), edit_post_path(@post)
     - if policy(@post).destroy?
       span.me-2
-        = link_to 'Destroy', post_path(@post), method: :delete
+        = link_to t('links.destroy'), post_path(@post), method: :delete
   = render 'posts/comments/form', ancestry: nil
 - @post.comments.each do |comment|
   = render 'posts/comments/comment', comment: comment if comment.is_root?

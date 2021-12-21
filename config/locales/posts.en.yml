@@ -1,0 +1,13 @@
+en:
+  posts:
+    index: All posts
+    create: Create post
+    edit: Edit post
+    notice:
+      create: 'Post was successfully created.'
+      destroy: 'Post was successfully destroyed.'
+      update: 'Post was successfully updated.'
+    comments:
+      reply: Reply
+    likes:
+      liked: Liked
