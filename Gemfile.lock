@@ -294,7 +294,6 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   simple_form
-  slim
   slim_lint (~> 0.22.1)
   spring
   sqlite3 (~> 1.4)
@@ -308,4 +307,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.32
+   2.3.5
