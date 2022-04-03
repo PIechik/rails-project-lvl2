@@ -68,6 +68,6 @@ gem 'pundit'
 gem 'rails-i18n'
 gem 'rollbar'
 gem 'simple_form'
-# gem 'slim'
+gem 'slim'
 gem 'slim_lint', '~> 0.22.1'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
