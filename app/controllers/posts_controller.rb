@@ -5,8 +5,7 @@ class PostsController < ApplicationController
   helper_method :resource_post
 
   def index
-    @posts = Post.all
-    authorize @posts
+    @posts = policy_scope(Post)
   end
 
   def show
