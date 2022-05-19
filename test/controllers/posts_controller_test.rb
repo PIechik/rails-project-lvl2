@@ -49,7 +49,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     attrs = { title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph_by_chars(number: 250),
-              post_category_id: post_categories(:one).id }
+              category_id: categories(:one).id }
     post posts_path, params: { post: attrs }
 
     assert { Post.find_by(attrs) }

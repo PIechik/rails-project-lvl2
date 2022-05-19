@@ -4,10 +4,10 @@ one:
   title: <%= Faker::Lorem.sentence %>
   body: <%= Faker::Lorem.paragraph_by_chars(number: 250) %>
   creator: one
-  post_category: one
+  category: one
 
 two:
   title:  <%= Faker::Lorem.sentence %>
   body: <%= Faker::Lorem.paragraph_by_chars(number: 250) %>
   creator: two
-  post_category: two
+  category: two
