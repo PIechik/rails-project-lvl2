@@ -1,8 +1,8 @@
-- if user_signed_in? && like_id(@post)
-  = link_to post_like_path(@post, like_id(@post)), method: :delete, rel: 'nofollow', class: 'link-dark text-decoration-none' do
+- if user_signed_in? && like_id(resource_post)
+  = link_to post_like_path(resource_post, like_id(resource_post)), method: :delete, rel: 'nofollow', class: 'link-dark text-decoration-none' do
     i.bi.bi-heart-fill
-      = @post.likes.count
+      = resource_post.likes.count
 - else
-  = link_to post_likes_path(@post), method: :post, rel: 'nofollow', class: 'link-dark text-decoration-none' do
+  = link_to post_likes_path(resource_post), method: :post, rel: 'nofollow', class: 'link-dark text-decoration-none' do
     i.bi.bi-heart
-      = @post.likes.count
+      = resource_post.likes.count

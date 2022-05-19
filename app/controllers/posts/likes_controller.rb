@@ -10,10 +10,9 @@ module Posts
     end
 
     def destroy
-      @post = Post.find(params[:post_id])
       @like = PostLike.find(params[:id])
       authorize @like
-      redirect_to @post if @like.destroy
+      redirect_to @like.post if @like.destroy
     end
   end
 end

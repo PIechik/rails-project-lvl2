@@ -2,6 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
+  helper_method :resource_post
 
   def index
     @posts = Post.all
@@ -9,8 +10,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    authorize @post
+    authorize resource_post
     @comment = PostComment.new
   end
 
@@ -31,32 +31,33 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
-    authorize @post
+    authorize resource_post
   end
 
   def update
-    @post = Post.find(params[:id])
-    authorize @post
+    authorize resource_post
 
-    if @post.update(post_params)
-      redirect_to @post, notice: t('posts.notice.update')
+    if resource_post.update(post_params)
+      redirect_to resource_post, notice: t('posts.notice.update')
     else
       render :edit
     end
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    authorize @post
-    if @post.destroy
+    authorize resource_post
+    if resource_post.destroy
       redirect_to posts_path, notice: t('posts.notice.destroy')
     else
-      redirect_to @post
+      redirect_to resource_post
     end
   end
 
   private
+
+  def resource_post
+    @resource_post ||= Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :body, :post_category_id)

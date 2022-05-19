@@ -2,25 +2,25 @@ ol.breadcrumb
   li.breadcrumb-item
     = link_to t('posts.index'), posts_path
   li.breadcrumb-item.active
-    = @post.post_category.name
+    = resource_post.post_category.name
 h2
-  = @post.title
+  = resource_post.title
 p
-  = @post.body
+  = resource_post.body
 .mt-5
   span.me-2
-    = @post.creator.email
+    = resource_post.creator.email
   span.me-2
-    = time_ago_in_words @post.created_at
+    = time_ago_in_words resource_post.created_at
   span.me-2
     = render 'likes'
   p
-    - if policy(@post).edit?
+    - if policy(resource_post).edit?
       span.me-2
-        = link_to t('links.edit'), edit_post_path(@post)
-    - if policy(@post).destroy?
+        = link_to t('links.edit'), edit_post_path(resource_post)
+    - if policy(resource_post).destroy?
       span.me-2
-        = link_to t('links.destroy'), post_path(@post), method: :delete
+        = link_to t('links.destroy'), post_path(resource_post), method: :delete
   = render 'posts/comments/form', ancestry: nil
-- @post.comments.each do |comment|
+- resource_post.comments.each do |comment|
   = render 'posts/comments/comment', comment: comment if comment.is_root?
